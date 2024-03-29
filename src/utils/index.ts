@@ -1,4 +1,13 @@
-import { names } from "./data";
+import { audioUrls, names } from "./data";
+
+export const audioData = audioUrls.map((audio) => ({
+  name: audio
+    .replace("https://static.canva.com/preso/music/", "")
+    .replace("%20", "")
+    .replace(/_v0\d.mp3+/g, ""),
+  url: audio,
+}));
+
 
 export function getBoundingRect(node: any) {
   const rect = node?.getBoundingClientRect();

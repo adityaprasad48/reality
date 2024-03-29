@@ -1,70 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animation with requestAnimationFrame</title>
-<style>
-    #rectangle {
-        width: 100px;
-        height: 50px;
-        background-color: blue;
-        position: absolute;
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+
+  <!-- Include Tailwind CSS stylesheet -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Include jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
+
 <body>
 
-<div id="rectangle"></div>
+  <div class="border w-[400px] h-[400px]">
+    <h1>HI</h1>
+  </div>
 
-<script>
-    const rectangle = document.getElementById('rectangle');
-    let startTime;
-
-    function animate(timestamp) {
-      console.log({timestamp})
-        if (!startTime) {startTime = timestamp}
-        const progress = timestamp - startTime;
-        const newXPosition = progress / 10; // Adjust speed here
-        rectangle.style.left = newXPosition + 'px';
-        if (newXPosition < window.innerWidth - 100) {
-            requestAnimationFrame(animate);
-        }
-      //   const newYPosition = progress / 10; // Adjust speed here
-      // rectangle.style.top = newYPosition + 'px';
-      // if (newYPosition < window.innerHeight - 100) {
-      //   requestAnimationFrame(animate);
-      // }
-    }
-
-    requestAnimationFrame(animate);
-
-    
-
-
-    function Rectangle(x, y, width, height, color) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.color = color;
-
-        this.draw = function (ctx) {
-          ctx.fillStyle = this.color;
-          ctx.fillRect(this.x, this.y, this.width, this.height);
-        };
-      }
-
-
-      const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-
-        const rect = new Rectangle(50, 50, 100, 80, 'blue');
-        rect.draw(ctx);
-
-
-</script>
-
+  <script>
+    $(document).ready(function () {
+      // jQuery DOM manipulation and event handling
+    });
+  </script>
 </body>
-</html>
 
+</html>

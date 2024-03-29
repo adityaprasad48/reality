@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 300vh;
+  /* background-color: bisque */
 }
 
 .rect_rotate {

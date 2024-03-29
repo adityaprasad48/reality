@@ -1,86 +1,212 @@
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { audioData } from "../utils/data";
-import { useWebAudio } from "../hooks/useAudio";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { BackwardIcon, ForwardIcon, PauseIcon, PlayIcon } from "./Icons";
+import clsx from "clsx";
 
-export default function AudioPlayer() {
-  const [url, setUrl] = useState("");
-  const { play, stop, isPlaying } = useWebAudio(url);
+export default function MusicPlay() {
+  const [audioContext, setAudioContext] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioObj, setAudioObj] = useState("");
+  let sourceNode = useRef(null);
 
-  // useEffect(() => {
-  //   play();
-  // }, []);
+  useEffect(() => {
+    const initAudio = async (au: string) => {
+      try {
+        // Create an AudioContext instance
+        const context = new AudioContext();
+        setAudioContext(context);
 
-  const onSongChange = (songUrl: string) => {
-    setUrl(songUrl);
-    play();
+        // Fetch audio data
+        const response = await fetch(au);
+        const arrayBuffer = await response.arrayBuffer();
+        const audioBuffer = await context.decodeAudioData(arrayBuffer);
+
+        // Create a new source node every time audio is initialized
+        sourceNode.current = context.createBufferSource();
+        sourceNode.current.buffer = audioBuffer;
+
+        // Connect the source node to the destination (speakers)
+        sourceNode.current.connect(context.destination);
+      } catch (error) {
+        console.error("Error initializing audio:", error);
+      }
+    };
+
+    let audioUrl = audioObj.src;
+
+    if (audioUrl) {
+      initAudio(audioUrl);
+    }
+
+    // Cleanup
+    return () => {
+      if (audioContext) {
+        audioContext.close();
+      }
+    };
+  }, [audioObj]);
+
+  const play = () => {
+    if (audioContext && sourceNode.current) {
+      console.log("state", audioContext?.state);
+      if (audioContext.state === "suspended") {
+        audioContext.resume(); // Resume the audio context if it's suspended
+      } else {
+        console.log("starting...");
+        sourceNode.current.start(0); // Start the audio playback
+      }
+
+      setIsPlaying(true); // Toggle the playing state
+    }
   };
 
-  const stopSong = () => {};
+  const pause = () => {
+    if (audioContext && sourceNode.current && isPlaying) {
+      audioContext.suspend(); // Pause the audio context
+      setIsPlaying(false);
+    }
+  };
 
-  // console.log(audioData);
+  const changeSong = (item: any) => {
+    if (sourceNode.current && isPlaying) {
+      sourceNode.current.stop(0);
+      setIsPlaying(false);
+    }
+    setAudioObj(item);
+  };
+
+  const [currentSong, setCurrentSong] = useState(null);
+  const audioRef = useRef(null);
+
+  const songs = [
+    {
+      id: 1,
+      title: "Rainy Day In Town With Birds Singing",
+      src: "https://cdn.pixabay.com/audio/2024/03/21/audio_b20bc53f05.mp3",
+    },
+    // {
+    //   id: 2,
+    //   title: "Soft Rain Ambient",
+    //   src: "https://cdn.pixabay.com/audio/2021/08/09/audio_e25ff0623a.mp3",
+    // },
+    {
+      id: 3,
+      title: "Forest with small river birds and nature field recording",
+      src: "https://cdn.pixabay.com/audio/2021/08/09/audio_6b294070f5.mp3",
+    },
+    {
+      id: 4,
+      title: "Nature sounds.tropical,jungle,birds",
+      src: "https://cdn.pixabay.com/audio/2022/03/26/audio_eab0c1eb43.mp3",
+    },
+    {
+      id: 5,
+      title: "Calm River Ambience | Loop",
+      src: "https://cdn.pixabay.com/audio/2022/11/05/audio_a90e44eb25.mp3",
+    },
+  ];
+
+  const playSong = (song: any) => {
+    if (currentSong && currentSong.id === song.id) {
+      togglePlay();
+    } else {
+      setCurrentSong(song);
+      setIsPlaying(true);
+    }
+  };
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+    if (audioRef?.current?.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  };
+
+  let outlineCls = "outline outline-2 outline-orange-400";
   return (
-    <div>
-      <div className="flex gap-2 m-2">
-        <button
-          onClick={stopSong}
-          className="bg-green-200 text-xl rounded-lg px-2 py-1"
-        >
-          <span>Stop</span>
-        </button>
-        <button className="bg-blue-200 text-xl rounded-lg px-2 py-1">
-          <span>Volume</span>
-        </button>
-      </div>
-      <div className="fixed top-16 w-56 text-right">
-        <Menu as="div" className="relative inline-block text-left">
-          <div>
-            <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
-              Playlist
-              <ChevronDownIcon
-                className="-mr-1 ml-2 h-5 w-5 text-violet-200 hover:text-violet-100"
-                aria-hidden="true"
-              />
-            </Menu.Button>
-          </div>
-          <Transition
-            // as={div}
-            enter="transition ease-out duration-100"
-            enterFrom="transform opacity-0 scale-95"
-            enterTo="transform opacity-100 scale-100"
-            leave="transition ease-in duration-75"
-            leaveFrom="transform opacity-100 scale-100"
-            leaveTo="transform opacity-0 scale-95"
-          >
-            <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
-              {audioData.map((item: any) => {
+    <div className="bg-transparent flex justify-center mt-4">
+      <div className="w-[600px]  flex flex-col justify-center items-center  rounded-lg bg-transparent ">
+        <div className="w-full bg-green-200 rounded-xl">
+          <div className="bg-transparent ">
+            <div
+              className="overflow-x-auto w-full  p-3 bg-transparent flex gap-2"
+              style={{ scrollbarWidth: "none", scrollBehavior: "smooth" }}
+            >
+              {songs.map((item: any) => {
                 return (
                   <div
-                    key={item.name}
-                    className="px-1 py-1 "
-                    onClick={() => onSongChange(item.url)}
+                    key={item.id}
+                    className={clsx([
+                      "px-2 py-1 shadow-lg  rounded-full h-10 outline outline-1 outline-gray-400 flex justify-center items-center",
+                      item.id == audioObj.id && outlineCls,
+                    ])}
+                    role="button"
                   >
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          className={`${
-                            active
-                              ? "bg-violet-500 text-white"
-                              : "text-gray-900"
-                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                        >
-                          {item.name}
-                        </button>
-                      )}
-                    </Menu.Item>
+                    <div className="w-3 h-3 bg-orange-400 rounded-full mr-2"></div>
+                    <div
+                      className="text-sm text-gray-600 whitespace-nowrap"
+                      onClick={() => changeSong(item)}
+                    >
+                      {item.title}
+                    </div>
                   </div>
                 );
               })}
-            </Menu.Items>
-          </Transition>
-        </Menu>
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-2 py-2 px-4 justify-center flex-start rounded-b-xl bg-green-200">
+          <button className="bg-white text-gray-400 text-sm rounded-full p-2">
+            <BackwardIcon />
+          </button>
+          <button
+            onClick={play}
+            className={clsx([
+              "bg-white text-gray-400 text-sm rounded-full p-2",
+              isPlaying && outlineCls,
+            ])}
+          >
+            <PlayIcon />
+          </button>
+          <button
+            onClick={pause}
+            className={clsx([
+              "bg-white text-gray-400 text-sm rounded-full p-2",
+              !isPlaying && outlineCls,
+            ])}
+          >
+            <PauseIcon />
+          </button>
+          <button
+            className={clsx([
+              "bg-white text-gray-400 text-sm rounded-full p-2",
+              // isPlaying && "outline outline-2 outline-orange-400",
+            ])}
+          >
+            <ForwardIcon />
+          </button>
+        </div>
       </div>
+      {/* <div className="border bg-green-100 p-2">
+        <ul>
+          {songs.map((song) => (
+            <li
+              className="border mb-2"
+              key={song.id}
+              onClick={() => playSong(song)}
+            >
+              {song.title}
+            </li>
+          ))}
+        </ul>
+        {currentSong && (
+          <div>
+            <audio ref={audioRef} src={currentSong.src} controls></audio>
+            <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>
+          </div>
+        )}
+      </div> */}
     </div>
   );
 }

@@ -105,14 +105,14 @@ const FocusElement = () => {
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M21.747 11.022A7.75 7.75 0 0 1 14.063 19c-.017.007-.044.02-.083.04a4 4 0 0 0-.439.29c-.358.263-.782.624-1.198.996-.414.37-.805.74-1.097 1.018l-.146.14-.206.196a5.317 5.317 0 0 1-.18.16l-.001.001c-.009.007-.055.043-.118.075l-.002.001a.756.756 0 0 1-.875-.137.75.75 0 0 1-.22-.53v-2.266A7.75 7.75 0 0 1 10 3.5h4c.198 0 .394.007.588.022-.232.46-.401.956-.497 1.479L14 5h-4a6.25 6.25 0 1 0 0 12.5h.998v2.02c.112-.102.227-.206.344-.31.428-.384.894-.782 1.31-1.088.207-.153.417-.294.614-.4.166-.09.438-.222.734-.222a6.25 6.25 0 0 0 6.247-6.05 5.461 5.461 0 0 0 1.5-.428z"
                             fill="currentColor"
                           ></path>
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M18.75 8.75a.75.75 0 0 0 1.5 0v-2h2a.75.75 0 0 0 0-1.5h-2v-2a.75.75 0 0 0-1.5 0v2h-2a.75.75 0 0 0 0 1.5h2v2z"
                             fill="currentColor"
                           ></path>
@@ -140,14 +140,14 @@ const FocusElement = () => {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M5 3h8a2 2 0 0 1 2 2v.5h-1.5V5a.5.5 0 0 0-.5-.5H5a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h2.5V17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm6 5.5a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9a.5.5 0 0 0-.5-.5h-8ZM19 7h-8a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"
                           fill="currentColor"
                         ></path>
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M15 11a.75.75 0 0 0-.75.75v1.5h-1.5a.75.75 0 0 0 0 1.5h1.5v1.5a.75.75 0 0 0 1.5 0v-1.5h1.5a.75.75 0 0 0 0-1.5h-1.5v-1.5A.75.75 0 0 0 15 11Z"
                           fill="currentColor"
                         ></path>
@@ -201,7 +201,7 @@ const FocusElement = () => {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M5 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
                           ></path>
                         </svg>

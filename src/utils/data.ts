@@ -317,7 +317,7 @@ export const names = [
   "Willow",
 ];
 
-const audioUrls = [
+export const audioUrls = [
   "https://static.canva.com/preso/music/Energetic%20Burst_v01.mp3",
   "https://static.canva.com/preso/music/Upbeat%20Fun_v01.mp3",
   "https://static.canva.com/preso/music/Focus%20Time_v01.mp3",
@@ -325,11 +325,25 @@ const audioUrls = [
   "https://static.canva.com/preso/music/Focus_Time_LoFi_v02.mp3",
 ];
 
-export const audioData = audioUrls.map((audio) => ({
-  name: audio
-    .replace("https://static.canva.com/preso/music/", "")
-    .replace("%20", "")
-    .replace(/_v0\d.mp3+/g, ""),
-  url: audio,
-}));
 
+
+export const details = {
+  name: "Aditya Prasad",
+  exp: "3",
+  img: "https://avatars.githubusercontent.com/u/44614594?s=400&u=92fa4155c955fe485545f01bff48a10dafc04303&v=4",
+  skills: [
+    "Next JS",
+    "React JS",
+    "Angular",
+    "JavaScript",
+    "D3.js",
+    "P5.js",
+    "Node JS",
+    "GraphQL",
+    "Linux",
+    "Ubuntu Server",
+    "Nginx",
+    "HTML5 & CSS3",
+    "Tailwind CSS",
+  ],
+};

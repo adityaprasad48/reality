@@ -212,14 +212,16 @@ function RectBox() {
     // drawAnimateRect();
 
     let c = document.getElementById("canvas");
-    let ctx = c.getContext("2d");
-    let x1 = 30;
-    let y1 = 40;
-    let r = 50;
-    let theta = 0.3;
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x1 + r * Math.cos(theta), y1 + r * Math.sin(theta));
-    ctx.stroke();
+    if(c) {
+      let ctx = c.getContext("2d");
+      let x1 = 30;
+      let y1 = 40;
+      let r = 50;
+      let theta = 0.3;
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x1 + r * Math.cos(theta), y1 + r * Math.sin(theta));
+      ctx.stroke();
+    }
 
     //  ctx.lineTo(50, 150);
     //  ctx.stroke();

@@ -23,6 +23,7 @@ import Navbar from "./components/Navbar.tsx";
 import Timer from "./components/Timer.tsx";
 import { ScreenPopProvider } from "./ctx/ScreenPopProvider.tsx";
 import MusicPlay from "./components/MusicPlay.tsx";
+import "tailwindcss/tailwind.css";
 
 export const appsChild = [
   {

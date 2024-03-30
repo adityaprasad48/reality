@@ -33,7 +33,9 @@ const NavDateTime = () => {
       <div className="text-sm font-bold z-20">
         {day} {date}
       </div>
-      <div className="text-md text-gray-500 font-bold">{time}</div>
+      <div className="text-md text-gray-500 dark:text-gray-300 font-bold">
+        {time}
+      </div>
     </div>
   );
 };

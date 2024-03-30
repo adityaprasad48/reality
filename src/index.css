@@ -123,9 +123,14 @@ code {
     monospace;
 }
 
-.sticky_new {
+.sticky_navbar {
   position: -webkit-sticky;
   position: sticky;
+  top: -80px;
+  transition: top 0.5s ease;
+}
+
+.sticky_navbar.sticky {
   top: 0;
 }
 

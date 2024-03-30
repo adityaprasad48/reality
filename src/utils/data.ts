@@ -347,3 +347,31 @@ export const details = {
     "Tailwind CSS",
   ],
 };
+
+export const songs = [
+  {
+    id: 1,
+    title: "Rainy Day In Town With Birds Singing",
+    src: "https://cdn.pixabay.com/audio/2024/03/21/audio_b20bc53f05.mp3",
+  },
+  // {
+  //   id: 2,
+  //   title: "Soft Rain Ambient",
+  //   src: "https://cdn.pixabay.com/audio/2021/08/09/audio_e25ff0623a.mp3",
+  // },
+  {
+    id: 3,
+    title: "Forest with small river birds and nature field recording",
+    src: "https://cdn.pixabay.com/audio/2021/08/09/audio_6b294070f5.mp3",
+  },
+  {
+    id: 4,
+    title: "Nature sounds.tropical,jungle,birds",
+    src: "https://cdn.pixabay.com/audio/2022/03/26/audio_eab0c1eb43.mp3",
+  },
+  {
+    id: 5,
+    title: "Calm River Ambience | Loop",
+    src: "https://cdn.pixabay.com/audio/2022/11/05/audio_a90e44eb25.mp3",
+  },
+];

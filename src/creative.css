@@ -1,0 +1,158 @@
+@keyframes fadeAway {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes moveBox {
+  0% {
+    top: 2%;
+    left: 2%;
+  }
+  25% {
+    top: 2%;
+    left: 40%;
+  }
+  50% {
+    top: 40%;
+    left: 40%;
+  }
+
+  75% {
+    top: 40%;
+    left: 2%;
+  }
+
+  100% {
+    top: 2%;
+    left: 2%;
+  }
+}
+
+.pink-box {
+  transform: translateX(-100%);
+  transition: transform 1.5s ease;
+}
+
+.slide-in {
+  transform: translateX(200px);
+}
+
+.blue-box {
+  transform: translateX(1000px);
+  transition: transform 1.5s ease;
+}
+
+.blue-slide-in {
+  transform: translateX(0px);
+}
+
+
+.resume-box {
+  position: absolute;
+  top: 1000px;
+  transition: top 1s ease
+}
+
+.resume-box.slide-up {
+  top: 0;
+}
+
+@keyframes slideIntoscreen {
+  0% {
+    top: -2%;
+    left: -20%;
+  }
+  100% {
+    top: 2%;
+    left: 20%;
+  }
+}
+
+.icon-wrap {
+  transition: opacity 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.element-1 {
+  transition: opacity 0.5s ease; /* Add transition properties */
+}
+
+.hidden-1 {
+  opacity: 0;
+}
+
+.visible-1 {
+  opacity: 1;
+}
+
+.note_controls {
+  display: none;
+}
+
+.note:hover .note_controls {
+  display: block;
+}
+
+.modal-content.inline {
+  left: 359px;
+  top: 179.575px;
+  /* display block or none */
+}
+
+.modal-content.top_transition {
+  opacity: 1;
+  -webkit-transition: top 0.13s;
+  transition: top 0.13s;
+}
+
+.modal-content {
+  background-color: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  opacity: 0;
+  padding: 16px;
+  position: fixed;
+  z-index: 4001;
+}
+
+.modal-overlay.inline {
+  width: 1350px;
+  height: 2041px;
+  /* display block or none */
+}
+
+.modal-overlay.opacity {
+  opacity: 0.6;
+}
+
+.modal-overlay.root {
+  background-color: #202124;
+  left: 0;
+  top: 0;
+  position: fixed;
+  -webkit-transition: opacity 0.218s ease-in;
+  transition: opacity 0.218s ease-in;
+  z-index: 4000;
+}
+
+.modal-overlay {
+  background: #fff;
+}
+
+/* Slide Show Css */
+.slide:first-child {
+  margin-left: 12px;
+}

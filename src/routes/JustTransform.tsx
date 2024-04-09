@@ -31,25 +31,8 @@ const JustTransform = () => {
     // animation: "slideIntoscreen 4s",
   };
 
-  const headings = [
-    "Fake padding work",
-    "button after and before element effect from left to right",
-    "Code Sandbox is done url: 'https://codesandbox.io/p/sandbox/transform-c6kwn2?file=%2Fsrc%2FApp.tsx%3A11%2C1' Add code sandbox in bottom navbar",
-    "Stackoverflow contribution every make nessary changes",
-    "Twitter account setup",
-    "Linkdin update post something every week",
-  ];
-
   return (
     <div>
-      <ul className="list-decimal">
-        {headings.map((heading, index) => (
-          <li key={index}>
-            <h1>{heading}</h1>
-          </li>
-        ))}
-      </ul>
-
       <div className="mt-20 flex">
         <div className="rect_rotate mr-12 w-[100px] h-[100px] bg-pink-200 rounded-lg"></div>
         <div className="rect_rotate mr-12 w-[100px] h-[100px] bg-green-200 rounded-lg"></div>

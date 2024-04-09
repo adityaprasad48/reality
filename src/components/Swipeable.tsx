@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 const Swipeable = (props: any) => {
-  const _props = props
-  console.log({_props})
+  // const _props = props
+  // console.log({_props})
   const [touchStartX, setTouchStartX] = useState(0);
 
   const handleTouchStart = (e: any) => {
@@ -17,7 +17,7 @@ const Swipeable = (props: any) => {
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 100) {
       // swipe length
-      onSwipe();
+      // onSwipe();
     }
   };
 

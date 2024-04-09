@@ -51,6 +51,16 @@
 }
 
 
+.resume-box {
+  position: absolute;
+  top: 1000px;
+  transition: top 1s ease
+}
+
+.resume-box.slide-up {
+  top: 0;
+}
+
 @keyframes slideIntoscreen {
   0% {
     top: -2%;

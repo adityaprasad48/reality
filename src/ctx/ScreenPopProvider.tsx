@@ -3,6 +3,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 const screenPopInitialState = {
   timer: false,
   music: false,
+  resume: false,
 };
 
 export const ScreenPopContext: any = createContext<any>(screenPopInitialState);

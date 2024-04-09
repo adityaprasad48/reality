@@ -346,6 +346,10 @@ export const details = {
     "HTML5 & CSS3",
     "Tailwind CSS",
   ],
+  social: {
+    GITURL: "https://github.com/adityaprasad48",
+    LinkDinURL: "https://www.linkedin.com/in/aditya-prasad-26b2b2183/",
+  },
 };
 
 export const songs = [
@@ -375,3 +379,4 @@ export const songs = [
     src: "https://cdn.pixabay.com/audio/2022/11/05/audio_a90e44eb25.mp3",
   },
 ];
+

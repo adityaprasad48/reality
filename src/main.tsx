@@ -24,6 +24,8 @@ import Timer from "./components/Timer.tsx";
 import { ScreenPopProvider } from "./ctx/ScreenPopProvider.tsx";
 import MusicPlay from "./components/MusicPlay.tsx";
 import "tailwindcss/tailwind.css";
+import SecondNav from "./components/SecondNav.tsx";
+import ResumeBox from "./routes/ResumeBox.tsx";
 
 export const appsChild = [
   {
@@ -137,10 +139,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ScreenPopProvider>
       <Navbar />
-      <RouterProvider router={router} />
-      <Timer />
-      <MusicPlay/>
-      <Tooltip id="my-tooltip" />
+
+      <main className=" h-[100%] relative">
+        <RouterProvider router={router} />
+        <Timer />
+        <MusicPlay />
+        <Tooltip id="my-tooltip" />
+        <ResumeBox/>
+      </main>
     </ScreenPopProvider>
   </React.StrictMode>
 );

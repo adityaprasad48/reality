@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Marqee = () => {
   const translateX = useRef<number>(0);

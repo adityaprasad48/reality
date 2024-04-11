@@ -3,15 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import { BackwardIcon, ForwardIcon, PauseIcon, PlayIcon } from "./Icons";
 import clsx from "clsx";
 import { songs } from "../lib/utils/data";
-// import { useScreenPopCtx } from "../ctx/ScreenPopProvider";
 
 export default function MusicPlay() {
   // const screenPopCtx = useScreenPopCtx();
   const screenPopCtx = { screenPop: { music: true } };
-  const [audioContext, setAudioContext] = useState(null);
+  const [audioContext, setAudioContext] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioObj, setAudioObj] = useState(songs[0]);
-  let sourceNode = useRef(null);
+  let sourceNode = useRef<any>(null);
 
   // track user gesture on window and true that flag and add this to condition along with audioUrl.
 
@@ -81,8 +80,8 @@ export default function MusicPlay() {
     setAudioObj(item);
   };
 
-  const [currentSong, setCurrentSong] = useState(null);
-  const audioRef = useRef(null);
+  const [currentSong, setCurrentSong] = useState<any>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const playSong = (song: any) => {
     if (currentSong && currentSong.id === song.id) {
@@ -98,7 +97,7 @@ export default function MusicPlay() {
     if (audioRef?.current?.paused) {
       audioRef.current.play();
     } else {
-      audioRef.current.pause();
+      audioRef?.current?.pause();
     }
   };
 
@@ -184,6 +183,7 @@ export default function MusicPlay() {
             <audio ref={audioRef} src={currentSong.src} controls></audio>
             <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>
           </div>
+   {songs.map((item: Song) => {
         )}
       </div> */}
     </div>

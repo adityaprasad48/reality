@@ -22,4 +22,5 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
   }
 );
 
+Box.displayName = 'Box';
 export default Box;

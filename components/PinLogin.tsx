@@ -1,10 +1,10 @@
+import { useRouter } from "next/router";
 import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const PinLogin = () => {
-  const inputRefs = useRef([]);
+  const inputRefs = useRef<any>([]);
   const pinCount = useRef(-1);
-  const navigate = useNavigate();
+  const navigate = useRouter();
   const [pin, setPin] = useState("");
   const [logger, setLogger] = useState("");
 
@@ -49,7 +49,6 @@ const PinLogin = () => {
     if (pin.length == 4) {
       if (isValidPin(pin)) {
         setLogger("Welcome Back!!!");
-        navigate("/throw");
       } else {
         setLogger("Wrong Pin Try agin!!");
         setPin("");
@@ -69,28 +68,36 @@ const PinLogin = () => {
               type="text"
               maxLength={1}
               pattern="[0-9]+"
-              ref={(el) => (inputRefs.current[0] = el)}
+              ref={(el) => {
+                inputRefs.current[0] = el;
+              }}
             />
             <input
               className="border border-gray-200 text-3xl w-[50px] h-[50px] text-center rounded-md"
               type="text"
               maxLength={1}
               pattern="[0-9]+"
-              ref={(el) => (inputRefs.current[1] = el)}
+              ref={(el) => {
+                inputRefs.current[1] = el;
+              }}
             />
             <input
               className="border border-gray-200 text-3xl w-[50px] h-[50px] text-center rounded-md"
               type="text"
               maxLength={1}
               pattern="[0-9]+"
-              ref={(el) => (inputRefs.current[2] = el)}
+              ref={(el) => {
+                inputRefs.current[2] = el;
+              }}
             />
             <input
               className="border border-gray-200 text-3xl w-[50px] h-[50px] text-center rounded-md"
               type="text"
               maxLength={1}
               pattern="[0-9]+"
-              ref={(el) => (inputRefs.current[3] = el)}
+              ref={(el) => {
+                inputRefs.current[3] = el;
+              }}
             />
           </div>
           {logger && <h1>{logger}</h1>}

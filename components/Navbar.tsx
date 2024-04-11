@@ -11,7 +11,6 @@ import {
 } from "./Icons";
 import Battery from "./Battery";
 import NavDateTime from "./NavDateTime";
-import { ScreenPopContext } from "../ctx/ScreenPopProvider";
 import { DarkMode } from "./DarkMode";
 import { details } from "../lib/utils/data";
 
@@ -19,7 +18,6 @@ const Navbar = () => {
   const [oldScrollY, setOldScrollY] = useState(window.scrollY);
   const [direction, setDirection] = useState("");
 
-  const screenPopCtx = useContext(ScreenPopContext);
 
   const showTimer = () => {
     // screenPopCtx.setScreenPop((s: any) => {

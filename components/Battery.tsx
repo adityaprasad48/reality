@@ -8,7 +8,7 @@ const Battery = () => {
     // Function to update battery percentage
     const updateBatteryStatus = async () => {
       try {
-        const battery = await navigator.getBattery();
+        const battery = await (navigator as any).getBattery();
         setBatteryPercentage(Math.round(battery.level * 100));
       } catch (error) {
         console.error("Failed to get battery status:", error);
@@ -18,7 +18,7 @@ const Battery = () => {
     // Update battery percentage on mount and whenever it changes
     updateBatteryStatus();
 
-    navigator.getBattery().then((battery: any) => {
+    (navigator as any).getBattery().then((battery: any) => {
       battery.addEventListener("levelchange", updateBatteryStatus);
     });
   }, []);

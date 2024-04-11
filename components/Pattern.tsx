@@ -30,7 +30,7 @@ const PatternLock = () => {
     { x: 90 * 2, y: 100 },
     { x: 90 * 3, y: 100 },
   ]);
-  const [lines, setLines] = useState([]);
+  const [lines, setLines] = useState<{x1: number, y1: number, x2: number, y2: number}[]>([]);
 
   const handleDotClick = (x: number, y: number) => {
     setPoints([...points, { x, y }]);

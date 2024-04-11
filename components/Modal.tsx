@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 const Modal = ({ isOpen, onClose, children }: any) => {
   useEffect(() => {
-    const handleOutsideClick = (e:Event) => {
+    const handleOutsideClick = (e:any) => {
       if (!e.target.closest(".modal-content")) {
         onClose();
       }

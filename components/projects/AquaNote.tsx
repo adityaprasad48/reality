@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "../Modal";
+import { ColumnsIcon, CopyIcon, CroissantIcon, CropIcon, Cross, CrossIcon, Delete, DeleteIcon, Edit2Icon } from "lucide-react";
 
 const AquaNote = () => {
   const [id, setId] = useState(1);
@@ -74,23 +75,22 @@ const AquaNote = () => {
 
   return (
     <div className="w-full">
-      <div className="border w-full p-2 flex items-center">
+      <div className="w-full p-2 flex items-center shadow-md">
         <h1 className="text-2xl font-bold text-gray-500">Aqua Notes</h1>
         <div
           onClick={addNote}
-          className="w-[50px] h-[50px] rounded-full bg-orange-300 relative ml-5 shadow-lg cursor-pointer"
+          className="w-[50px] h-[50px] rounded-full bg-orange-300 relative ml-5 shadow-lg cursor-pointer flex items-center justify-center"
         >
-          <div className="h-1 w-1/2 bg-white rounded-full origin-center rotate-90 absolute top-1/2 left-1/4"></div>
-          <div className="h-1 w-1/2 bg-white rounded-full absolute top-1/2 left-1/4"></div>
+          <Cross className="text-white" size={24} />
         </div>
       </div>
-      <div className="border w-[100%] shadow-lg ">
-        <div className="flex gap-1 flex-wrap items-start bg-lime-100 p-2">
+      <div className="w-[100%] shadow-lg overflow-y-scroll h-[600px] bg-lime-100">
+        <div className="flex gap-1 flex-wrap items-start  p-2 h-full">
           {notes.map((item: any, index: number) => (
             <>
               <div
                 key={"card__" + index}
-                className="note relative flex flex-col rounded-lg shadow-lg bg-white"
+                className="note relative flex h-[400px] w-[300px] flex-col rounded-lg shadow-lg bg-white flex-none"
               >
                 <div className="w-full">
                   <div
@@ -109,12 +109,12 @@ const AquaNote = () => {
                     dangerouslySetInnerHTML={{ __html: item.title }}
                   />
                 </div>
-                <div className="border">
+                <div className="border flex-1">
                   <div
                     className="w-[200px]  min-h-[100px] text-lg text-gray-400 p-2  outline-none"
                     contentEditable
                     spellCheck={false}
-                    onInput={(e) => onContentChange(e, item.id)}
+                    onBlur={(e) => onContentChange(e, item.id)}
                     dangerouslySetInnerHTML={{ __html: item.content }}
                   />
                 </div>
@@ -123,43 +123,43 @@ const AquaNote = () => {
                     Edited on: {"28 March"}
                   </span>
                 </div>
-                <div className="note_controls border p-1">
-                  <div className="flex items-center">
+                <div className="note_controls p-1">
+                  <div className="flex items-center ">
                     <span
-                      className="text-red-400 font-bold py-1 px-3 cursor-pointer border-r-2 border-r-gray-400 bg-gray-100"
+                      className="text-red-400 font-bold py-2 px-3 cursor-pointer border-r-2 bg-gray-50"
                       data-tooltip-id="my-tooltip"
                       data-tooltip-place="bottom"
                       data-tooltip-content="Delete"
                       onClick={() => deleteNote(item.id)}
                     >
-                      D
+                      <CroissantIcon size={24} />
                     </span>
                     <span
-                      className="text-green-400 font-bold py-1 px-3 cursor-pointer border-r-2 border-r-gray-400 bg-gray-100"
+                      className="text-green-400 font-bold py-2 px-3 cursor-pointer border-r-2 bg-gray-50"
                       data-tooltip-id="my-tooltip"
                       data-tooltip-place="bottom"
                       data-tooltip-content="Edit"
                       onClick={editNote}
                     >
-                      E
+                      <Edit2Icon size={24} />
                     </span>
                     <span
-                      className="text-teal-400 font-bold py-1 px-3 cursor-pointer border-r-2 border-r-gray-400 bg-gray-100"
+                      className="text-teal-400 font-bold py-2 px-3 cursor-pointer border-r-2 bg-gray-50"
                       data-tooltip-id="my-tooltip"
                       data-tooltip-place="bottom"
                       data-tooltip-content="Copy"
                       onClick={copyNote}
                     >
-                      C
+                      <CopyIcon size={24} />
                     </span>
                     <span
-                      className="text-teal-400 font-bold py-1 px-3 cursor-pointer border-r-2 border-r-gray-400 bg-gray-100"
+                      className="text-teal-400 font-bold py-2 px-3 cursor-pointer border-r-2 bg-gray-50"
                       data-tooltip-id="my-tooltip"
                       data-tooltip-place="bottom"
                       data-tooltip-content="Change Background"
                       onClick={changeBg}
                     >
-                      B
+                      <ColumnsIcon size={24} />
                     </span>
                   </div>
                 </div>
@@ -186,9 +186,9 @@ const AquaNote = () => {
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
                   </div>
-                  <div className="border">
+                  <div className="">
                     <div
-                      className="w-[200px]  min-h-[100px] text-lg text-gray-400 p-2  outline-none"
+                      className="w-[200px]  min-h-[50px] text-lg text-gray-400 p-2  outline-none"
                       contentEditable
                       spellCheck={false}
                       onInput={(e) => onContentChange(e, item.id)}
@@ -200,7 +200,7 @@ const AquaNote = () => {
                       Edited on: {"28 March"}
                     </span>
                   </div>
-                  <div className="note_controls border p-1">
+                  <div className="note_controls p-1">
                     <div className="flex items-center">
                       <span
                         className="text-red-400 font-bold py-1 px-3 cursor-pointer border-r-2 border-r-gray-400 bg-gray-100"
@@ -244,10 +244,10 @@ const AquaNote = () => {
               </Modal>
             </>
           ))}
-          {JSON.stringify(notes, null)}
+          {/* {JSON.stringify(notes, null)} */}
         </div>
       </div>
-      <button onClick={openModal}>Open Modal</button>
+      {/* <button onClick={openModal}>Open Modal</button> */}
     </div>
   );
 };
@@ -256,29 +256,3 @@ const AquaNote = () => {
 
 export default AquaNote;
 
-// Create carosel component Try these creator prompts
-
-// Take away from recent list gpt
-// cursor pointer on hover
-
-// little white blur at the end
-// .description {
-//     mask-image: linear-gradient(to right, var(--cib-color-background-surface-app-primary) 90%, transparent);
-// }
-
-// ::after {
-//     content: "";
-//     position: absolute;
-//     inline-size: 3px;
-//     block-size: 100%;
-//     inset-inline-start: 0px;
-//     border-start-start-radius: var(--cib-comp-thread-host-border-radius);
-//     border-end-start-radius: var(--cib-comp-thread-host-border-radius);
-// }
-
-// understood i can show actionable things in small area new ways to design think
-
-// Create table filter like this
-// https://htmedia-my.sharepoint.com/personal/rohit_manjhi_hindustantimes_com/_layouts/15/onedrive.aspx?ga=1&id=%2Fpersonal%2Frohit%5Fmanjhi%5Fhindustantimes%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files
-
-// select for action flow is also good implement it as well

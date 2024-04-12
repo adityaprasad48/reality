@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 
 const TabsList = ({ tabs }: any) => {
-  const tabsRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<any>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);

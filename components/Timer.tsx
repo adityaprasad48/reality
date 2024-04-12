@@ -1,7 +1,6 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
 import DragMove from "./DragMove";
-// import { useScreenPopCtx } from "../ctx/ScreenPopProvider";
 
 const Timer = () => {
   const [time, setTime] = useState(0);
@@ -29,7 +28,7 @@ const Timer = () => {
 
     // Cleanup: clear interval when component unmounts
     return () => clearInterval(intervalId);
-  }, [isRunning, typeMin, time]);
+  }, [isRunning, typeMin, time, isTimer]);
 
   const handleIsTimer = () => {
     setIsTimer((timer) => !timer);
@@ -86,7 +85,7 @@ const Timer = () => {
   };
 
   // Calculate minutes and seconds
-  let minutes, seconds, remainingTime;
+  let minutes, seconds, remainingTime = 0;
 
   if (!isTimer) {
     minutes = Math.floor(time / 60);

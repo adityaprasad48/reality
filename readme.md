@@ -17,7 +17,7 @@ I have used Poppins fonts from google font.
 ## About Tools
 
 - Next JS: for frontend
-- Tailwind CSS: for styling
+- Tailwind CSS: for styling 
 - TypeScript
 - Docker
 - GitHub Action & Workflow
@@ -31,3 +31,8 @@ Deployed in my home rasberry pi server
 Todo:-
 1. Upload ScreenShot
 2. Take care of yourself
+
+
+Thoughts:-
+
+Next Js or Typescript, Javascript all are just like pen or pencil I use this to make things which comes in mind.
